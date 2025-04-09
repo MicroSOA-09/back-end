@@ -1,0 +1,18 @@
+dotnet ef migrations add Init --context StakeholdersContext --project Modules/Stakeholders/Explorer.Stakeholders.Infrastructure --startup-project Explorer.API
+dotnet ef database update --context StakeholdersContext --project Modules/Stakeholders/Explorer.Stakeholders.Infrastructure --startup-project Explorer.API
+
+
+dotnet ef migrations add Init --context BlogContext --project Modules/Blog/Explorer.Blog.Infrastructure --startup-project Explorer.API
+dotnet ef database update --context BlogContext --project Modules/Blog/Explorer.Blog.Infrastructure --startup-project Explorer.API
+
+
+dotnet ef migrations add Init --context ToursContext --project Modules/Tours/Explorer.Tours.Infrastructure --startup-project Explorer.API
+dotnet ef database update --context ToursContext --project Modules/Tours/Explorer.Tours.Infrastructure --startup-project Explorer.API
+
+
+dotnet ef migrations add Init --context EncountersContext --project Modules/Encounters/Explorer.Encounters.Infrastructure --startup-project Explorer.API
+dotnet ef database update --context EncountersContext --project Modules/Encounters/Explorer.Encounters.Infrastructure --startup-project Explorer.API
+
+
+dotnet ef migrations add Init --context PaymentsContext --project Modules/Payments/Explorer.Payments.Infrastructure --startup-project Explorer.API
+dotnet ef database update --context PaymentsContext --project Modules/Payments/Explorer.Payments.Infrastructure --startup-project Explorer.API
