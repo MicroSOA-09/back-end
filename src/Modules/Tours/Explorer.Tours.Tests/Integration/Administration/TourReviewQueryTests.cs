@@ -1,16 +1,16 @@
-﻿using Explorer.API.Controllers.Administrator.Administration;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Explorer.API.Controllers.Administrator.Administration;
+using Explorer.API.Controllers.Tourist;
 using Explorer.BuildingBlocks.Core.UseCases;
 using Explorer.Tours.API.Dtos;
 using Explorer.Tours.API.Public.Administration;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shouldly;
-using Explorer.API.Controllers.Tourist;
 
 namespace Explorer.Tours.Tests.Integration.Administration
 {
