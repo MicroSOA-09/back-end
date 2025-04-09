@@ -2,6 +2,14 @@ using Explorer.API.Startup;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenLocalhost(44333, listenOptions =>
+    {
+        listenOptions.UseHttps("/Users/slobica/certs/localhost.pfx", "password");
+    });
+});
+
 builder.Services.AddControllers();
 builder.Services.ConfigureSwagger(builder.Configuration);
 const string corsPolicy = "_corsPolicy";
