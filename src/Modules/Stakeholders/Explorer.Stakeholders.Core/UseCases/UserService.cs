@@ -17,6 +17,16 @@ namespace Explorer.Stakeholders.Core.UseCases
             _userRepository = userRepository;
         }
 
+        public Result<PagedResult<UserDto>> GetUsernames(List<int> userIds)
+        {
+            List<User> users = new List<User>();
+            foreach (var id in userIds)
+            {
+                users.Add(_userRepository.Get(id));
+            }
+            return MapToDto(new PagedResult<User>(users.ToList(),  users.Count()));
+        }
+
         public Result<UserDto> Get(int userId)
         {
             var result = _userRepository.Get(userId);
