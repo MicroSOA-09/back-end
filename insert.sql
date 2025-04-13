@@ -1,46 +1,46 @@
---blog
-INSERT INTO blog."BlogPosts" (
-    "AuthorId", "TourId", "Title", "Description", "CreationDate", "ImageURLs", "Comments", "Ratings", "Status"
-) VALUES
-(1, 101, 'Prva avantura u planinama', 'Opis mog prvog putovanja u Alpe.', '2025-04-01 10:00:00+00', ARRAY['https://example.com/img1.jpg'], 
- '[{"Text": "Prelepo iskustvo!", "UserId": 2, "CreationTime": "2025-04-01T10:30:00Z", "LastUpdatedTime": "2025-04-01T10:30:00Z"}]'::jsonb,
- '[{"UserId": 2, "CreationTime": "2025-04-01T10:35:00Z", "IsPositive": true}]'::jsonb, 1),
+-- --blog
+-- INSERT INTO blog."BlogPosts" (
+--     "AuthorId", "TourId", "Title", "Description", "CreationDate", "ImageURLs", "Comments", "Ratings", "Status"
+-- ) VALUES
+-- (1, 101, 'Prva avantura u planinama', 'Opis mog prvog putovanja u Alpe.', '2025-04-01 10:00:00+00', ARRAY['https://example.com/img1.jpg'], 
+--  '[{"Text": "Prelepo iskustvo!", "UserId": 2, "CreationTime": "2025-04-01T10:30:00Z", "LastUpdatedTime": "2025-04-01T10:30:00Z"}]'::jsonb,
+--  '[{"UserId": 2, "CreationTime": "2025-04-01T10:35:00Z", "IsPositive": true}]'::jsonb, 1),
 
-(2, 102, 'Obilazak jezera', 'Priča o danu provedenom na jezeru.', '2025-04-02 14:00:00+00', ARRAY['https://example.com/img2.jpg', 'https://example.com/img3.jpg'], 
- '[{"Text": "Voda je bila kristalno čista!", "UserId": 3, "CreationTime": "2025-04-02T14:20:00Z", "LastUpdatedTime": "2025-04-02T14:20:00Z"}]'::jsonb,
- '[{"UserId": 3, "CreationTime": "2025-04-02T14:25:00Z", "IsPositive": true}, {"UserId": 4, "CreationTime": "2025-04-02T15:00:00Z", "IsPositive": false}]'::jsonb, 1),
+-- (2, 102, 'Obilazak jezera', 'Priča o danu provedenom na jezeru.', '2025-04-02 14:00:00+00', ARRAY['https://example.com/img2.jpg', 'https://example.com/img3.jpg'], 
+--  '[{"Text": "Voda je bila kristalno čista!", "UserId": 3, "CreationTime": "2025-04-02T14:20:00Z", "LastUpdatedTime": "2025-04-02T14:20:00Z"}]'::jsonb,
+--  '[{"UserId": 3, "CreationTime": "2025-04-02T14:25:00Z", "IsPositive": true}, {"UserId": 4, "CreationTime": "2025-04-02T15:00:00Z", "IsPositive": false}]'::jsonb, 1),
 
-(3, 103, 'Gradska tura', 'Istraživanje starog grada.', '2025-04-03 09:00:00+00', NULL, 
- '[]'::jsonb,
- '[{"UserId": 5, "CreationTime": "2025-04-03T09:15:00Z", "IsPositive": true}]'::jsonb, 0),
+-- (3, 103, 'Gradska tura', 'Istraživanje starog grada.', '2025-04-03 09:00:00+00', NULL, 
+--  '[]'::jsonb,
+--  '[{"UserId": 5, "CreationTime": "2025-04-03T09:15:00Z", "IsPositive": true}]'::jsonb, 0),
 
-(4, 104, 'Pustinjska ekspedicija', 'Putovanje kroz pustinju.', '2025-04-04 12:00:00+00', ARRAY['https://example.com/img4.jpg'], 
- '[{"Text": "Vrućina je bila nepodnošljiva!", "UserId": 6, "CreationTime": "2025-04-04T12:30:00Z", "LastUpdatedTime": "2025-04-04T12:30:00Z"}]'::jsonb,
- '[]'::jsonb, 1),
+-- (4, 104, 'Pustinjska ekspedicija', 'Putovanje kroz pustinju.', '2025-04-04 12:00:00+00', ARRAY['https://example.com/img4.jpg'], 
+--  '[{"Text": "Vrućina je bila nepodnošljiva!", "UserId": 6, "CreationTime": "2025-04-04T12:30:00Z", "LastUpdatedTime": "2025-04-04T12:30:00Z"}]'::jsonb,
+--  '[]'::jsonb, 1),
 
-(5, 105, 'Planinarenje na vrh', 'Uspon na najviši vrh.', '2025-04-05 07:00:00+00', ARRAY['https://example.com/img5.jpg'], 
- '[{"Text": "Pogled je bio neverovatan!", "UserId": 7, "CreationTime": "2025-04-05T07:45:00Z", "LastUpdatedTime": "2025-04-05T07:45:00Z"}]'::jsonb,
- '[{"UserId": 7, "CreationTime": "2025-04-05T08:00:00Z", "IsPositive": true}]'::jsonb, 1),
+-- (5, 105, 'Planinarenje na vrh', 'Uspon na najviši vrh.', '2025-04-05 07:00:00+00', ARRAY['https://example.com/img5.jpg'], 
+--  '[{"Text": "Pogled je bio neverovatan!", "UserId": 7, "CreationTime": "2025-04-05T07:45:00Z", "LastUpdatedTime": "2025-04-05T07:45:00Z"}]'::jsonb,
+--  '[{"UserId": 7, "CreationTime": "2025-04-05T08:00:00Z", "IsPositive": true}]'::jsonb, 1),
 
-(1, 106, 'Druga tura u šumu', 'Šetnja kroz gustu šumu.', '2025-04-06 15:00:00+00', NULL, 
- '[]'::jsonb,
- '[{"UserId": 8, "CreationTime": "2025-04-06T15:20:00Z", "IsPositive": false}]'::jsonb, 0),
+-- (1, 106, 'Druga tura u šumu', 'Šetnja kroz gustu šumu.', '2025-04-06 15:00:00+00', NULL, 
+--  '[]'::jsonb,
+--  '[{"UserId": 8, "CreationTime": "2025-04-06T15:20:00Z", "IsPositive": false}]'::jsonb, 0),
 
-(2, 107, 'Obala mora', 'Dan na plaži.', '2025-04-07 11:00:00+00', ARRAY['https://example.com/img6.jpg'], 
- '[{"Text": "More je bilo prelepo!", "UserId": 9, "CreationTime": "2025-04-07T11:30:00Z", "LastUpdatedTime": "2025-04-07T11:30:00Z"}]'::jsonb,
- '[{"UserId": 9, "CreationTime": "2025-04-07T11:40:00Z", "IsPositive": true}]'::jsonb, 1),
+-- (2, 107, 'Obala mora', 'Dan na plaži.', '2025-04-07 11:00:00+00', ARRAY['https://example.com/img6.jpg'], 
+--  '[{"Text": "More je bilo prelepo!", "UserId": 9, "CreationTime": "2025-04-07T11:30:00Z", "LastUpdatedTime": "2025-04-07T11:30:00Z"}]'::jsonb,
+--  '[{"UserId": 9, "CreationTime": "2025-04-07T11:40:00Z", "IsPositive": true}]'::jsonb, 1),
 
-(3, 108, 'Selo u brdima', 'Poseta tradicionalnom selu.', '2025-04-08 13:00:00+00', ARRAY['https://example.com/img7.jpg'], 
- '[{"Text": "Hrana je bila odlična!", "UserId": 10, "CreationTime": "2025-04-08T13:15:00Z", "LastUpdatedTime": "2025-04-08T13:15:00Z"}]'::jsonb,
- '[]'::jsonb, 1),
+-- (3, 108, 'Selo u brdima', 'Poseta tradicionalnom selu.', '2025-04-08 13:00:00+00', ARRAY['https://example.com/img7.jpg'], 
+--  '[{"Text": "Hrana je bila odlična!", "UserId": 10, "CreationTime": "2025-04-08T13:15:00Z", "LastUpdatedTime": "2025-04-08T13:15:00Z"}]'::jsonb,
+--  '[]'::jsonb, 1),
 
-(4, 109, 'Noć pod zvezdama', 'Kampovanje u prirodi.', '2025-04-09 20:00:00+00', NULL, 
- '[]'::jsonb,
- '[{"UserId": 11, "CreationTime": "2025-04-09T20:30:00Z", "IsPositive": true}]'::jsonb, 0),
+-- (4, 109, 'Noć pod zvezdama', 'Kampovanje u prirodi.', '2025-04-09 20:00:00+00', NULL, 
+--  '[]'::jsonb,
+--  '[{"UserId": 11, "CreationTime": "2025-04-09T20:30:00Z", "IsPositive": true}]'::jsonb, 0),
 
-(5, 110, 'Reka i kanu', 'Vožnja kanuom niz reku.', '2025-04-10 08:00:00+00', ARRAY['https://example.com/img8.jpg'], 
- '[{"Text": "Avantura za pamćenje!", "UserId": 12, "CreationTime": "2025-04-10T08:45:00Z", "LastUpdatedTime": "2025-04-10T08:45:00Z"}]'::jsonb,
- '[{"UserId": 12, "CreationTime": "2025-04-10T09:00:00Z", "IsPositive": true}]'::jsonb, 1);
+-- (5, 110, 'Reka i kanu', 'Vožnja kanuom niz reku.', '2025-04-10 08:00:00+00', ARRAY['https://example.com/img8.jpg'], 
+--  '[{"Text": "Avantura za pamćenje!", "UserId": 12, "CreationTime": "2025-04-10T08:45:00Z", "LastUpdatedTime": "2025-04-10T08:45:00Z"}]'::jsonb,
+--  '[{"UserId": 12, "CreationTime": "2025-04-10T09:00:00Z", "IsPositive": true}]'::jsonb, 1);
 
  --stakeholders
  INSERT INTO stakeholders."AppRatings" ("UserId", "Rating", "Description", "DateCreated") VALUES
