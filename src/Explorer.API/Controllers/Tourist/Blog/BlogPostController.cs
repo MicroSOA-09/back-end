@@ -1,11 +1,14 @@
-﻿using Explorer.Blog.API.Dtos;
+﻿using System.Text;
+using Explorer.Blog.API.Dtos;
 using Explorer.Blog.API.Public;
 using Explorer.Blog.Core.Domain;
 using Explorer.Blog.Core.UseCases;
 using Explorer.BuildingBlocks.Core.UseCases;
 using Explorer.Tours.API.Dtos;
+using FluentResults;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Explorer.API.Controllers.Tourist.Blog
 {
@@ -19,19 +22,38 @@ namespace Explorer.API.Controllers.Tourist.Blog
             _blogPostService = blogPostService;
         }
 
+        // [HttpGet]
+        // public ActionResult<PagedResult<BlogPostDto>> GetAll([FromQuery] int page, [FromQuery] int pageSize)
+        // {
+        //     var result = _blogPostService.GetAll(page, pageSize);
+        //     return CreateResponse(result);
+        // }
+        
         [HttpGet]
-        public ActionResult<PagedResult<BlogPostDto>> GetAll([FromQuery] int page, [FromQuery] int pageSize)
+        public async Task<IActionResult> GetBlogs()
         {
-            var result = _blogPostService.GetAll(page, pageSize);
-            return CreateResponse(result);
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://blog-service:80/api/blog/blogpost");
+            var json = await response.Content.ReadAsStringAsync();
+            var result = Content(json, "application/json"); // Proširi direktno na front-end
+            return result;
+        }
+        
+        // [HttpGet("{blogPostId:int}")]
+        // public ActionResult<BlogPostDto> GetById(int blogPostId)
+        // {
+        //     var result = _blogPostService.GetById(blogPostId);
+        //     return CreateResponse(result);
+        // }
+        [HttpGet("{blogPostId}")]
+        public async Task<IActionResult> GetBlog(string blogPostId)
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync($"http://blog-service:80/api/blog/blogpost/{blogPostId}");
+            var json = await response.Content.ReadAsStringAsync();
+            return Content(json, "application/json"); // Proširi direktno na front-end
         }
 
-        [HttpGet("{blogPostId:int}")]
-        public ActionResult<BlogPostDto> GetById(int blogPostId)
-        {
-            var result = _blogPostService.GetById(blogPostId);
-            return CreateResponse(result);
-        }
 
         [HttpPost("{blogPostid:int}/comments")]
         public ActionResult<BlogPostDto> AddComment(int blogPostid, [FromBody] BlogPostCommentDto blogPostComment)
@@ -46,12 +68,49 @@ namespace Explorer.API.Controllers.Tourist.Blog
             return CreateResponse(result);
         }
 
+        // [HttpPost]
+        // public ActionResult<BlogPostDto> Create([FromBody] BlogPostDto blogPost)
+        // {
+        //     var result = _blogPostService.Create(blogPost);
+        //     return CreateResponse(result);
+        // }
+        
         [HttpPost]
-        public ActionResult<BlogPostDto> Create([FromBody] BlogPostDto blogPost)
+        public async Task<ActionResult<BlogPostDto>> Create([FromBody] BlogPostDto blogPost)
         {
-            var result = _blogPostService.Create(blogPost);
+            var goBlogPost = new
+            {
+                AuthorID = blogPost.AuthorId,
+                TourID = blogPost.TourId,
+                authorUsername = blogPost.AuthorUsername,
+                title = blogPost.Title,
+                description = blogPost.Description,
+                creationDate = blogPost.CreationDate,
+                imageURLs = blogPost.ImageURLs,
+                status = blogPost.Status
+            };
+            using var client = new HttpClient();
+            
+            
+            var jsonContent = new StringContent(
+                JsonConvert.SerializeObject(goBlogPost),
+                Encoding.UTF8,
+                "application/json"
+            );
+            var response = await client.PostAsync("http://blog-service:80/api/blog/blogpost", jsonContent);
+            if (!response.IsSuccessStatusCode)
+            {
+                return StatusCode((int)response.StatusCode, await response.Content.ReadAsStringAsync());
+            }
+            
+            var jsonResponse = await response.Content.ReadAsStringAsync();
+            var createdBlog = JsonConvert.DeserializeObject<BlogPostDto>(jsonResponse);
+            
+            var result = Result.Ok(createdBlog); // Uspešan rezultat
             return CreateResponse(result);
         }
+        
+        
 
         [HttpPut("{blogPostId:int}/comments")]
         public ActionResult<BlogPostDto> UpdateComment(int blogPostId, [FromBody] BlogPostCommentDto editedComment)
