@@ -4,10 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.ListenLocalhost(44333, listenOptions =>
-    {
-        listenOptions.UseHttps("/Users/slobica/certs/localhost.pfx", "password");
-    });
+    options.ListenAnyIP(80);
 });
 
 builder.Services.AddControllers();
@@ -30,13 +27,12 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/error");
-    app.UseHsts();
+    // app.UseHsts();
 }
 
 app.UseRouting();
 app.UseCors(corsPolicy);
-app.UseHttpsRedirection();
-app.UseAuthorization();
+// app.UseHttpsRedirection();
 app.UseAuthorization();
 
 
