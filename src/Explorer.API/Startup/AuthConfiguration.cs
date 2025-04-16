@@ -62,13 +62,14 @@ public static class AuthConfiguration
             }
 
             var username = usernameValues.FirstOrDefault();
-            var role = roleValues.FirstOrDefault();
+            var role = roleValues.FirstOrDefault().ToLower();
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(role))
             {
                 Logger.LogWarning("Empty X-Username or X-User-Role headers");
                 return AuthenticateResult.Fail("Empty or invalid headers");
             }
+            
 
             // Validacija uloge
             var validRoles = new[] { "administrator", "author", "tourist" };
